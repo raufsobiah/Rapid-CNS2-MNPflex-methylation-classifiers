@@ -1,22 +1,17 @@
 <div align="left">
 
-<h1 style="display: inline-block;">Rapid-CNS2-MNPflex-methylation-classifiers</h1>
+<h1 style="display: inline-block;">Rapid-CNS2+MNPflex-methylation-classifiers</h1>
 </div>
 
-## Overview
-
 Rapid-CNS2 and MNPflex are brain/central nervous system (CNS) tumour methylation classifiers.
-
 The fork is based on nanopore sequencing data (for cfDNA and genomic DNA) that includes 5hmC and 5mC modifications (5mC_5hmC or 5mCG_5hmCG). The workflow looks for bam files in bam directory and merges them, calls modifications using Rapid-CNS2 pipeline which runs MNPFlex preprocessing using mnpflex_script (mnp-flex_preprocessing-updated.sh) and generates an input data file for MNP-Flex tool. MNP-Flex API then generates a comprehensive molecular report based on input data file. the report includes coverage distribution, methylation value distribution, methylation classification (family, superfamily, class, subclass) and MGMT promoter methylation.
  
-
-
-# Requirements:
+## Requirements:
 - Nextflow (version 3.0.0 or later)
-- Conda, 
+- Conda
 - Docker or Singularity (optional, for containerized execution of tools)
 
-# Input data:
+## Input data:
 - Raw ONT POD5 data (for basecalling) or pre-aligned BAM files i.e. bam_dir="/path to your bam files"
 - Reference genome file (hg38 required) i.e. ref= "/path to reference file" 
 - id="your sample name or any identifier"
@@ -31,15 +26,12 @@ The fork is based on nanopore sequencing data (for cfDNA and genomic DNA) that i
     awk '{print $6"\t"$1"\t"$2"\t"$3}' LBp-254-barcode04.MNPFlex.subset.bed | sort | uniq -d
 ```
 
-# Output paths
-merged_bam="merged/${id}.merged.bam"
-mods_out="results/mods"
-mnpflex_out="results/mnpflex"
+## Output
+- merged_bam="sample_MNPFlex.subset.bed"  ## output of Rapid-CNS2 which is used as input for MNPflex tool
+- MNPFlex-report.pdf  ## report from MNPflex tool
 
 
-
-
-# Installations
+## Installations
 
 nextflow:
 ```bash
@@ -82,6 +74,5 @@ check installation success:
 ```bash
 nextflow info
 nextflow.config
-Installations Done.
+Installations Done
 ```
-
