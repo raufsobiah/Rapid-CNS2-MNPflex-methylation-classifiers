@@ -77,3 +77,7 @@ nextflow info
 nextflow.config
 Installations Done
 ```
+
+
+## Citation
+Patel, A., Göbel, K., Ille, S. et al. Prospective, multicenter validation of a platform for rapid molecular profiling of central nervous system tumors. Nature Medicine 31, 1567–1577 (2025). https://doi.org/10.1038/s41591-025-03562-5
